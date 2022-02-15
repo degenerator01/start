@@ -1,4 +1,6 @@
-
+package-lock.json
+package.json
+yarn.lock
 .DS_Store
 .eslintignore
 .eslintrc.js
