@@ -1,0 +1,118 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>E2E Test Dapp</title>
+  <link rel="icon" type="image/png" href="metamask-fox.svg">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.1/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="metamask.css" type="text/css">
+
+<script type="text/javascript">
+  
+
+  
+</script>
+
+
+</head>
+
+<body>
+  <main class="container-fluid">
+    <header>
+      <h1 class="text-center">E2E Test Dapp</h1>
+    </header>
+
+    <!-- Part 1 Setting up Basic Actions and Status-->
+    <section>
+      <h3 class="card-title">Staking</h3>       
+      <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          You can stake your resources. 5% of all conversions goes to stakers.
+          Note that if you stake Weapon and people buy it all out, you'll be able to only withdraw other resources.
+          Virtual prices are: Food=1, Wood=1, Copper=2, Weapon=4.
+
+          <p class="info-text alert alert-primary">Food in bank: <span id="foodCounter"></span><br/>
+            <input type=text id='foodToDeposit' />
+            <button class="btn btn-primary mb-3 btn-sm" id="approveFoodBtn" enabled>Approve</button><a id="foodMax">max</a><br/>
+            <input type=text id='foodToWithdraw' />
+            <button class="btn btn-primary mb-3 btn-sm" id="withdrawFoodBtn" disabled>Withdraw</button><a id="food2Max">max</a>
+          </p>
+
+          <p class="info-text alert alert-primary">Wood in bank: <span id="woodCounter"></span><br/>
+            <input type=text id='woodToDeposit' />
+            <button class="btn btn-primary mb-3 btn-sm" id="approveWoodBtn" enabled>Approve</button><a id="woodMax">max</a><br/>
+            <input type=text id='woodToWithdraw' />
+            <button class="btn btn-primary mb-3 btn-sm" id="withdrawWoodBtn" disabled>Withdraw</button><a id="wood2Max">max</a>
+          </p>
+
+          <p class="info-text alert alert-primary">Copper in bank: <span id="copperCounter"></span><br/>
+            <input type=text id='copperToDeposit' />
+            <button class="btn btn-primary mb-3 btn-sm" id="approveCopperBtn" enabled>Approve</button><br/><a id="copperMax">max</a>
+            <input type=text id='copperToWithdraw' />
+            <button class="btn btn-primary mb-3 btn-sm" id="withdrawCopperBtn" disabled>Withdraw</button><a id="copper2Max">max</a>
+          </p>
+
+          <p class="info-text alert alert-primary">Weapon in bank: <span id="weaponCounter"></span><br/>
+            <input type=text id='weaponToDeposit' />
+            <button class="btn btn-primary mb-3 btn-sm" id="approveWeaponBtn" enabled>Approve</button><br/><a id="weaponMax">max</a>
+            <input type=text id='weaponToWithdraw' />
+            <button class="btn btn-primary mb-3 btn-sm" id="withdrawWeaponBtn" disabled>Withdraw</button><a id="weapon2Max">max</a>
+          </p>
+
+          <p class="info-text alert alert-secondary">Share Price: <span id="sharePricer"></span><br/>
+            <i>This is a price of share. It grows as more resources are being traded.</i></p>
+          <p class="info-text alert alert-secondary">Total Shares in the bank: <span id="totalShareser"></span></p>
+          <p class="info-text alert alert-secondary">Total Value of shares: <span id="totalValuer"></span></p>
+          <p class="info-text alert alert-secondary">Your Shares: <span id="yourSharesLbl"></span></p>
+          <p class="info-text alert alert-secondary">Your Value: <span id="yourValueLbl"></span></p>
+
+
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+
+          <p class="info-text alert alert-secondary">Resources conversion.<br/>
+            The button will become available only if you have enough input resources, and the bank has enough output resources.</p>
+          🍖 Food (<span id="userFoodAmountTXT" class="btn-link">0</span>): <input type=text id="foodToConvertInput"/> » <span id="type0ResultTxt">0</span> 🪵 Wood
+            <button class="btn btn-primary mb-3" id="foodConvertBtn" disabled>Convert</button><br/>
+
+          🪵 Wood (<span id="userWoodAmountTXT" class="btn-link">0</span>): <input type=text id="woodToConvertInput"/> » <span id="type1ResultTxt">0</span> 🍖 Food
+            <button class="btn btn-primary mb-3" id="woodConvertBtn" disabled>Convert</button><br/>
+
+          🍖 Food (<span id="userFoodAmountTXT1" class="btn-link">0</span>), 🪵 Wood (<span  id="userWoodAmountTXT1" class="btn-link">0</span>): <input type=text id="foodWoodToConvertInput"/> » <span id="type2ResultTxt">0</span> 🏀 Copper
+            <button class="btn btn-primary mb-3" id="foodWoodConvertBtn" disabled>Convert</button><br/>
+
+          🏀 Copper (<span id="userCopperAmountTXT" class="btn-link">0</span>): <input type=text id="copperToConvertInput"/> » <span id="type3ResultTxt">0</span> 🍖 Food, 🪵 Wood
+            <button class="btn btn-primary mb-3" id="copperConvertBtn" disabled>Convert</button><br/>
+
+          🍖 Food (<span id="userFoodAmountTXT2" class="btn-link">0</span>), 🪵 Wood (<span  id="userWoodAmountTXT2" class="btn-link">0</span>), 🏀 Copper (<span id="userCopperAmountTXT1" class="btn-link">0</span>): <input type=text id="foodWoodCopperToConvertInput"/> » <span id="type4ResultTxt">0</span> 🔬 Weapon
+            <button class="btn btn-primary mb-3" id="foodWoodCopperConvertBtn" disabled>Convert</button><br/>
+
+          🔬 Weapon (<span id="userWeaponAmountTXT" class="btn-link">0</span>): <input type=text id="weaponToConvertInput"/> » <span id="type5ResultTxt">0</span> 🍖 Food, 🪵 Wood, 🏀 Copper
+            <button class="btn btn-primary mb-3" id="weaponConvertBtn" disabled>Convert</button><br/>
+
+
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+
+          <p class="info-text alert alert-success">Accounts: <span id="accounts"></span></p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- /Part 1 -->
+
+  </main>
+
+  <script src="node_modules/@metamask/onboarding/dist/metamask-onboarding.bundle.js" defer></script>
+
+  <script src="bn.js" defer></script>
+  <script src="web3.min.js" defer></script>
+  <script src="contract.js" defer></script>
+</body>
+
+</html>
