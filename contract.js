@@ -135,10 +135,11 @@ const initialize = async () => {
 
 };
 
-function updateValues(){
-  testContract();
-  checkApprovals();
-  checkBalances();
+async function updateValues(){
+  await testContract();
+  await checkApprovals();
+  await checkBalances();
+  makeCalcsWork();
 }
 
 window.addEventListener('DOMContentLoaded', initialize);
