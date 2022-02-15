@@ -158,45 +158,56 @@ async function makeCalcsWork(){
   userFoodAmountTXT.onclick = async function(){
     foodToConvertInput.value=Math.round(100*foodOfUser/Emult)/100;
     type0ResultTxt.innerText = await checkOutput(foodToConvertInput.value);
+    foodToConvertInput.oninput();
   };
 
   userFoodAmountTXT1.onclick = async function(){
     foodWoodToConvertInput.value=Math.round(100*foodOfUser/Emult)/100;
     type2ResultTxt.innerText = await checkOutput(foodWoodToConvertInput.value);
+    foodWoodToConvertInput.oninput();
   };
   userFoodAmountTXT2.onclick = async function(){
     foodWoodCopperToConvertInput.value=Math.round(100*foodOfUser/Emult)/100;
     type4ResultTxt.innerText = await checkOutput(foodWoodCopperToConvertInput.value);
+    foodWoodCopperToConvertInput.oninput();
   };
 //////////
   userWoodAmountTXT.onclick = async function(){
     woodToConvertInput.value=Math.round(100*woodOfUser/Emult)/100;
     type1ResultTxt.innerText = await checkOutput(woodToConvertInput.value);
+    woodToConvertInput.oninput();
   };
 
   userWoodAmountTXT1.onclick = async function(){
     foodWoodToConvertInput.value=Math.round(100*woodOfUser/Emult)/100;
     type2ResultTxt.innerText = await checkOutput(foodWoodToConvertInput.value);
+    foodWoodToConvertInput.oninput();
   };
 
   userWoodAmountTXT2.onclick = async function(){
     foodWoodCopperToConvertInput.value=Math.round(100*woodOfUser/Emult)/100;
     type4ResultTxt.innerText = await checkOutput(foodWoodCopperToConvertInput.value);
+    foodWoodCopperToConvertInput.oninput();
   };
 ///////////
   userCopperAmountTXT.onclick = async function(){
     copperToConvertInput.value=Math.round(100*copperOfUser/Emult)/100;
     type3ResultTxt.innerText = await checkOutput(copperToConvertInput.value);
+    copperToConvertInput.oninput();
   };
 
   userCopperAmountTXT1.onclick = async function(){
     foodWoodCopperToConvertInput.value=Math.round(100*copperOfUser/Emult)/100;
     type4ResultTxt.innerText = await checkOutput(foodWoodCopperToConvertInput.value);
+    foodWoodCopperToConvertInput.oninput();
+
   };
 //////////
   userWeaponAmountTXT.onclick = async function(){
     weaponToConvertInput.value=Math.round(100*weaponOfUser/Emult)/100;
     type5ResultTxt.innerText = await checkOutput(weaponToConvertInput.value);
+    weaponToConvertInput.oninput();
+
   };
 
 ////////////
