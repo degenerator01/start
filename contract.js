@@ -80,22 +80,23 @@ const initialize = async () => {
     } else {
       //If MetaMask is installed we ask the user to connect to their wallet
 
-      const accounts1 = ethereum.request({ method: 'eth_accounts' }).then((accounts1) => {
-        console.log(accounts1);
-        if(accounts1.length==0) return false;
+//      const accounts1 = ethereum.request({ method: 'eth_accounts' }).then((accounts1) => {
+      const accounts1 = await ethereum.request({ method: 'eth_accounts' });
 
-        onboardButton.innerText = 'Connect';
-        onboardButton.onclick = onClickConnect;
+      onboardButton.innerText = 'Connect';
+      onboardButton.onclick = onClickConnect;
 
-        if (accounts1.length > 0){
-          accounts.innerHTML = accounts1[0] || 'Not able to get accounts';
-          userAddress = accounts1[0];
-          onboardButton.disabled = true;
+      if (accounts1.length > 0){
+        accounts.innerHTML = accounts1[0] || 'Not able to get accounts';
+        userAddress = accounts1[0];
+        onboardButton.disabled = true;
+          
+        updateValues();
 
-        }else{
-          onboardButton.disabled = false;
-        }
-      });
+      }else{
+        onboardButton.disabled = false;
+      }
+//      });
     }
   };
 
