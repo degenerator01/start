@@ -27,12 +27,19 @@
 
     <!-- Part 1 Setting up Basic Actions and Status-->
     <section>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+          <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
+
+          <p class="info-text alert alert-success">Accounts: <span id="accounts"></span></p>
+        </div>
+
       <h3 class="card-title">Staking</h3>       
       <div class="row">
         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
           You can stake your resources. 5% of all conversions goes to stakers.
           Note that if you stake Weapon and people buy it all out, you'll be able to only withdraw other resources.
-          Virtual prices are: Food=1, Wood=1, Copper=2, Weapon=4.
+          Virtual prices are: Food=1, Wood=1, Copper=2, Weapon=4. There is 5% deposit fee as well.
+
 
           <p class="info-text alert alert-primary">Food in bank: <span id="foodCounter"></span><br/>
             <input type=text id='foodToDeposit' />
@@ -94,11 +101,6 @@
             <button class="btn btn-primary mb-3" id="weaponConvertBtn" disabled>Convert</button><br/>
 
 
-        </div>
-        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
-          <button class="btn btn-primary btn-lg btn-block mb-3" id="connectButton" disabled></button>
-
-          <p class="info-text alert alert-success">Accounts: <span id="accounts"></span></p>
         </div>
 
       </div>
